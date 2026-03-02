@@ -1,0 +1,44 @@
+{
+  "id": "u1",
+  "name": "タロウ",
+  "age": 32,
+  "location": "東京都渋谷区",
+  "gym": "ゴールドジム渋谷",
+  "verified": true,
+  "trustScore": 98,
+  "scoreText": "High Quality",
+  "trainingHistory": "5年6ヶ月",
+  "specialty": "胸・肩",
+  "lifts": [
+    { "label": "ベンチプレス", "valueKg": 120, "maxKg": 150 },
+    { "label": "スクワット", "valueKg": 160, "maxKg": 200 },
+    { "label": "デッドリフト", "valueKg": 190, "maxKg": 230 }
+  ],
+  "schedule": [
+    { "dayOfWeek": "MON", "morningAvailable": false, "nightAvailable": true },
+    { "dayOfWeek": "TUE", "morningAvailable": true, "nightAvailable": false },
+    { "dayOfWeek": "WED", "morningAvailable": false, "nightAvailable": true }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "authorName": "ジュン",
+      "rating": 4.9,
+      "text": "追い込みが本当に素晴らしく、時間も正確です。",
+      "postedAgoText": "2日前",
+      "tags": ["時間に正確", "圧が強い"],
+      "avatarUrl": "assets/images/r1.png"
+    },
+    {
+      "id": "r2",
+      "authorName": "ケンタ",
+      "rating": 4.7,
+      "text": "フォームチェックが丁寧で助かりました。",
+      "postedAgoText": "1ヶ月前",
+      "tags": ["フォーム詳しい"],
+      "avatarUrl": "assets/images/r2.png"
+    }
+  ],
+  "bio": "大会出場を目指して週5でトレーニングしています。",
+  "badges": ["本人確認済み", "プレミアム"]
+}

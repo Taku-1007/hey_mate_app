@@ -1,0 +1,16 @@
+{
+  "name": "ケンタロウ",
+  "age": 30,
+  "avatarUrl": "assets/images/me.png",
+  "verified": true,
+  "premium": true,
+  "trustScore": 98,
+  "trustLabel": "High Quality",
+  "badges": ["本人確認済み", "プレミアム"],
+  "menus": [
+    { "id": "gym", "title": "所属ジム設定", "subtitle": "ジムを変更", "icon": "gym", "accentColorHex": "#27A8F3", "targetRoute": "/settings/gym" },
+    { "id": "plan", "title": "有料プラン管理", "subtitle": "プランを確認", "icon": "star", "accentColorHex": "#FFB74D", "targetRoute": "/settings/plan" },
+    { "id": "trust", "title": "信頼スコアの確認", "subtitle": "安全度を確認", "icon": "shield", "accentColorHex": "#12C36E", "targetRoute": "/settings/trust" }
+  ],
+  "appVersion": "v2.4.0"
+}
