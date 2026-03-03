@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hey_mate_app/presentation/components/hm_bottom_nav.dart';
+import 'package:hey_mate_app/presentation/routes/app_router_name.dart';
 import 'package:hey_mate_app/presentation/screens/age_check_screen.dart';
 import 'package:hey_mate_app/presentation/screens/birthdate_screen.dart';
 import 'package:hey_mate_app/presentation/screens/chat_screen.dart';
@@ -16,34 +17,34 @@ import 'package:hey_mate_app/presentation/screens/welcome_screen.dart';
 
 GoRouter createRouter() {
   return GoRouter(
-    initialLocation: '/welcome',
+    initialLocation: AppRouteName.welcome,
     routes: [
       GoRoute(
-        path: '/welcome',
+        path: AppRouteName.welcome,
         builder: (context, state) => const WelcomeScreen(),
       ),
       GoRoute(
-        path: '/signup',
+        path: AppRouteName.signup,
         builder: (context, state) => const SignupScreen(),
       ),
       GoRoute(
-        path: '/age-check',
+        path: AppRouteName.ageCheck,
         builder: (context, state) => const AgeCheckScreen(),
       ),
       GoRoute(
-        path: '/birthdate',
+        path: AppRouteName.birthdate,
         builder: (context, state) => const BirthdateScreen(),
       ),
       GoRoute(
-        path: '/guideline',
+        path: AppRouteName.guideline,
         builder: (context, state) => const GuidelineScreen(),
       ),
       GoRoute(
-        path: '/kyc/steps',
+        path: AppRouteName.kycSteps,
         builder: (context, state) => const KycStepsScreen(),
       ),
       GoRoute(
-        path: '/kyc/upload',
+        path: AppRouteName.kycUpload,
         builder: (context, state) => const KycUploadScreen(),
       ),
       ShellRoute(
@@ -65,52 +66,54 @@ GoRouter createRouter() {
         },
         routes: [
           GoRoute(
-            path: '/home',
+            path: AppRouteName.home,
             builder: (context, state) => const HomeScreen(),
           ),
           GoRoute(
-            path: '/matches',
+            path: AppRouteName.matches,
             builder: (context, state) => const MatchListScreen(),
           ),
           GoRoute(
-            path: '/chat/:id',
-            builder: (context, state) =>
-                ChatScreen(roomId: state.pathParameters['id']!),
+            path: AppRouteName.chat,
+            builder:
+                (context, state) =>
+                    ChatScreen(roomId: state.pathParameters['id']!),
           ),
           GoRoute(
-            path: '/mypage',
+            path: AppRouteName.mypage,
             builder: (context, state) => const MypageScreen(),
           ),
         ],
       ),
       GoRoute(
-        path: '/profile/:id',
-        builder: (context, state) =>
-            ProfileDetailScreen(userId: state.pathParameters['id']!),
+        path: AppRouteName.profile,
+        builder:
+            (context, state) =>
+                ProfileDetailScreen(userId: state.pathParameters['id']!),
       ),
     ],
   );
 }
 
 int _indexForLocation(String location) {
-  if (location.startsWith('/home')) return 0;
-  if (location.startsWith('/matches')) return 1;
-  if (location.startsWith('/chat')) return 2;
-  if (location.startsWith('/mypage')) return 3;
+  if (location.startsWith(AppRouteName.home)) return 0;
+  if (location.startsWith(AppRouteName.matches)) return 1;
+  if (location.startsWith(AppRouteName.chatBase)) return 2;
+  if (location.startsWith(AppRouteName.mypage)) return 3;
   return 0;
 }
 
 String _locationForIndex(int index) {
   switch (index) {
     case 0:
-      return '/home';
+      return AppRouteName.home;
     case 1:
-      return '/matches';
+      return AppRouteName.matches;
     case 2:
-      return '/chat/room1';
+      return '${AppRouteName.chatBase}/room1';
     case 3:
-      return '/mypage';
+      return AppRouteName.mypage;
     default:
-      return '/home';
+      return AppRouteName.home;
   }
 }
