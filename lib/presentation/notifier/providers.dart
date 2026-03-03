@@ -19,14 +19,10 @@ import 'package:hey_mate_app/infrastructure/mock/json_loader.dart';
 import 'package:hey_mate_app/infrastructure/mock/kyc_repository_mock.dart';
 import 'package:hey_mate_app/infrastructure/mock/match_repository_mock.dart';
 import 'package:hey_mate_app/infrastructure/mock/mypage_repository_mock.dart';
-import 'package:hey_mate_app/infrastructure/mock/onboarding_repository_mock.dart';
 import 'package:hey_mate_app/infrastructure/mock/profile_repository_mock.dart';
 
 final jsonLoaderProvider = Provider<JsonLoader>((ref) => JsonLoader());
 
-final onboardingRepositoryProvider = Provider<OnboardingRepository>(
-  (ref) => OnboardingRepositoryMock(ref.watch(jsonLoaderProvider)),
-);
 final ageRepositoryProvider = Provider<AgeRepository>(
   (ref) => AgeRepositoryMock(ref.watch(jsonLoaderProvider)),
 );
@@ -55,10 +51,6 @@ final mypageRepositoryProvider = Provider<MypageRepository>(
   (ref) => MypageRepositoryMock(ref.watch(jsonLoaderProvider)),
 );
 
-// Data providers
-final onboardingStepsProvider = FutureProvider<List<OnboardingStep>>(
-  (ref) => ref.watch(onboardingRepositoryProvider).fetchSteps(),
-);
 final ageGateProvider = FutureProvider<AgeGate>(
   (ref) => ref.watch(ageRepositoryProvider).fetchAgeGate(),
 );
@@ -77,12 +69,16 @@ final homeCardsProvider = FutureProvider<List<MatchCard>>(
 final matchesProvider = FutureProvider<List<MatchListItem>>(
   (ref) => ref.watch(matchRepositoryProvider).fetchMatches(),
 );
-final profileProvider =
-    FutureProvider.family<ProfileDetail, String>((ref, id) async {
+final profileProvider = FutureProvider.family<ProfileDetail, String>((
+  ref,
+  id,
+) async {
   return ref.watch(profileRepositoryProvider).fetchProfile(id);
 });
-final chatRoomProvider =
-    FutureProvider.family<ChatRoom, String>((ref, roomId) async {
+final chatRoomProvider = FutureProvider.family<ChatRoom, String>((
+  ref,
+  roomId,
+) async {
   return ref.watch(chatRepositoryProvider).fetchRoom(roomId);
 });
 final mypageProvider = FutureProvider<MypageSummary>(

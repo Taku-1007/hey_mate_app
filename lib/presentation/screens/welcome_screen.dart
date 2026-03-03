@@ -1,80 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hey_mate_app/presentation/notifier/providers.dart';
+import 'package:hey_mate_app/core/constants/app_text.dart';
+import 'package:hey_mate_app/core/theme/app_colors.dart';
+import 'package:hey_mate_app/core/theme/app_typography.dart';
+import 'package:hey_mate_app/gen/assets.gen.dart';
+import 'package:hey_mate_app/presentation/components/primary_button.dart';
+import 'package:hey_mate_app/presentation/routes/app_router_name.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stepsAsync = ref.watch(onboardingStepsProvider);
     return Scaffold(
-      body: stepsAsync.when(
-        data: (steps) {
-          final step = steps.first;
-          return SafeArea(
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              Assets.images.sampleImage.path,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned.fill(
+            child: Container(color: Colors.black.withValues(alpha: 0.4)),
+          ),
+          SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(step.title,
-                            style:
-                                Theme.of(context).textTheme.headlineMedium),
-                        const SizedBox(height: 12),
-                        Text(step.subtitle,
-                            style: Theme.of(context).textTheme.bodyMedium),
+                        Text(AppText.appName, style: AppTypography.heroTitle),
+                        const SizedBox(height: 120),
+                        Text(
+                          AppText.welcomeScreenTitle,
+                          style: AppTypography.title,
+                        ),
                         const SizedBox(height: 24),
-                        AspectRatio(
-                          aspectRatio: 4 / 3,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              step.imageUrl,
-                              fit: BoxFit.cover,
-                              errorBuilder: (_, __, ___) =>
-                                  Container(color: Colors.grey[200]),
-                            ),
-                          ),
+                        Text(
+                          AppText.welcomeScreenSubTitle,
+                          style: AppTypography.subtitle,
                         ),
                       ],
                     ),
                   ),
                   Column(
                     children: [
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () =>
-                              context.pushReplacement('/signup'),
-                          child: Text(step.primaryCta),
-                        ),
+                      PrimaryButton(
+                        label: AppText.startApp,
+                        foregroundColor: AppColors.black,
+                        onPressed:
+                            () => context.pushReplacement(AppRouteName.signup),
+                        height: 64,
+                        borderRadius: 32,
                       ),
-                      if (step.secondaryCta != null) ...[
-                        const SizedBox(height: 12),
-                        SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                            onPressed: () =>
-                                context.pushReplacement('/signup'),
-                            child: Text(step.secondaryCta!),
-                          ),
+                      const SizedBox(height: 16),
+                      PrimaryButton(
+                        label: AppText.login,
+                        // ignore: deprecated_member_use
+                        backgroundColor: AppColors.glassSurface.withValues(
+                          alpha: 0.25,
                         ),
-                      ],
+                        foregroundColor: Colors.white,
+                        // ignore: deprecated_member_use
+                        borderColor: Colors.white.withOpacity(0.35),
+                        borderWidth: 1,
+                        overlayColor: Colors.white24,
+                        height: 64,
+                        borderRadius: 32,
+                        onPressed:
+                            () => context.pushReplacement(AppRouteName.signup),
+                      ),
+                      const SizedBox(height: 40),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        AppText.welcomeScreenAgreement,
+                        style: AppTypography.subtitle2,
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-          );
-        },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text('ロード失敗: $e')),
+          ),
+        ],
       ),
     );
   }
