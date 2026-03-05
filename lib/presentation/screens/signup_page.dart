@@ -73,7 +73,7 @@ class SignupPage extends StatelessWidget {
                   borderWidth: 1,
                   height: 56,
                   borderRadius: 28,
-                  onPressed: () {},
+                  onPressed: () => context.pushReplacement(AppRouteName.home),
                 ),
                 const SizedBox(height: 14),
                 PrimaryButton(
@@ -83,7 +83,7 @@ class SignupPage extends StatelessWidget {
                   foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                   height: 56,
                   borderRadius: 28,
-                  onPressed: () {},
+                  onPressed: () => context.pushReplacement(AppRouteName.home),
                 ),
                 const SizedBox(height: 14),
                 PrimaryButton(
@@ -101,7 +101,7 @@ class SignupPage extends StatelessWidget {
                   foregroundColor: AppColors.white,
                   height: 56,
                   borderRadius: 28,
-                  onPressed: () {},
+                  onPressed: () => context.pushReplacement(AppRouteName.home),
                 ),
                 const SizedBox(height: 28),
                 Text.rich(
