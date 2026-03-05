@@ -13,87 +13,91 @@ class WelcomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset(
-              Assets.images.sampleImage.path,
-              fit: BoxFit.cover,
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.asset(
+                Assets.images.sampleImage.path,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Positioned.fill(
-            child: Container(color: Colors.black.withValues(alpha: 0.4)),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Column(
+            Positioned.fill(
+              child: Container(color: Colors.black.withValues(alpha: 0.4)),
+            ),
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(AppText.appName, style: AppTypography.heroTitle),
+                          const SizedBox(height: 120),
+                          Text(
+                            AppText.welcomeScreenTitle,
+                            style: AppTypography.title,
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            AppText.welcomeScreenSubTitle,
+                            style: AppTypography.subtitle,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        PrimaryButton(
+                          label: AppText.startApp,
+                          foregroundColor: AppColors.black,
+                          onPressed:
+                              () =>
+                                  context.pushReplacement(AppRouteName.signup),
+                          height: 64,
+                          borderRadius: 32,
+                        ),
+                        const SizedBox(height: 16),
+                        PrimaryButton(
+                          label: AppText.login,
+                          // ignore: deprecated_member_use
+                          backgroundColor: AppColors.glassSurface.withValues(
+                            alpha: 0.25,
+                          ),
+                          foregroundColor: Colors.white,
+                          // ignore: deprecated_member_use
+                          borderColor: Colors.white.withOpacity(0.35),
+                          borderWidth: 1,
+                          overlayColor: Colors.white24,
+                          height: 64,
+                          borderRadius: 32,
+                          onPressed:
+                              () => context.pushReplacement(AppRouteName.login),
+                        ),
+                        const SizedBox(height: 40),
+                      ],
+                    ),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(AppText.appName, style: AppTypography.heroTitle),
-                        const SizedBox(height: 120),
                         Text(
-                          AppText.welcomeScreenTitle,
-                          style: AppTypography.title,
-                        ),
-                        const SizedBox(height: 24),
-                        Text(
-                          AppText.welcomeScreenSubTitle,
-                          style: AppTypography.subtitle,
+                          AppText.welcomeScreenAgreement,
+                          style: AppTypography.subtitle2,
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
-                  ),
-                  Column(
-                    children: [
-                      PrimaryButton(
-                        label: AppText.startApp,
-                        foregroundColor: AppColors.black,
-                        onPressed:
-                            () => context.pushReplacement(AppRouteName.signup),
-                        height: 64,
-                        borderRadius: 32,
-                      ),
-                      const SizedBox(height: 16),
-                      PrimaryButton(
-                        label: AppText.login,
-                        // ignore: deprecated_member_use
-                        backgroundColor: AppColors.glassSurface.withValues(
-                          alpha: 0.25,
-                        ),
-                        foregroundColor: Colors.white,
-                        // ignore: deprecated_member_use
-                        borderColor: Colors.white.withOpacity(0.35),
-                        borderWidth: 1,
-                        overlayColor: Colors.white24,
-                        height: 64,
-                        borderRadius: 32,
-                        onPressed:
-                            () => context.pushReplacement(AppRouteName.signup),
-                      ),
-                      const SizedBox(height: 40),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        AppText.welcomeScreenAgreement,
-                        style: AppTypography.subtitle2,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

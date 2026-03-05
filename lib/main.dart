@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hey_mate_app/presentation/routes/app_router.dart';
+
+final _router = createRouter();
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -12,11 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GoRouter router = createRouter();
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'HEY MATE',
-      routerConfig: router,
+      routerConfig: _router,
     );
   }
 }
