@@ -11,60 +11,59 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/apple_icon-icons.ico
+  String get appleIconIcons => 'assets/icons/apple_icon-icons.ico';
+
+  /// File path: assets/icons/apple_logo.png
+  AssetGenImage get appleLogo =>
+      const AssetGenImage('assets/icons/apple_logo.png');
+
+  /// File path: assets/icons/google_logo.ico
+  String get googleLogoIco => 'assets/icons/google_logo.ico';
+
+  /// File path: assets/icons/google_logo.png
+  AssetGenImage get googleLogoPng =>
+      const AssetGenImage('assets/icons/google_logo.png');
+
+  /// File path: assets/icons/left_arrow_back.svg
+  String get leftArrowBack => 'assets/icons/left_arrow_back.svg';
+
+  /// File path: assets/icons/mail.svg
+  String get mail => 'assets/icons/mail.svg';
+
+  /// List of all assets
+  List<dynamic> get values => [
+    appleIconIcons,
+    appleLogo,
+    googleLogoIco,
+    googleLogoPng,
+    leftArrowBack,
+    mail,
+  ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
-
-  /// File path: assets/images/a1.png
-  AssetGenImage get a1 => const AssetGenImage('assets/images/a1.png');
-
-  /// File path: assets/images/a2.png
-  AssetGenImage get a2 => const AssetGenImage('assets/images/a2.png');
-
-  /// File path: assets/images/card1.jpg
-  AssetGenImage get card1 => const AssetGenImage('assets/images/card1.jpg');
-
-  /// File path: assets/images/card2.jpg
-  AssetGenImage get card2 => const AssetGenImage('assets/images/card2.jpg');
-
-  /// File path: assets/images/me.png
-  AssetGenImage get me => const AssetGenImage('assets/images/me.png');
-
-  /// File path: assets/images/onboarding1.png
-  AssetGenImage get onboarding1 =>
-      const AssetGenImage('assets/images/onboarding1.png');
-
-  /// File path: assets/images/onboarding2.png
-  AssetGenImage get onboarding2 =>
-      const AssetGenImage('assets/images/onboarding2.png');
-
-  /// File path: assets/images/r1.png
-  AssetGenImage get r1 => const AssetGenImage('assets/images/r1.png');
-
-  /// File path: assets/images/r2.png
-  AssetGenImage get r2 => const AssetGenImage('assets/images/r2.png');
 
   /// File path: assets/images/sample_image.png
   AssetGenImage get sampleImage =>
       const AssetGenImage('assets/images/sample_image.png');
 
+  /// File path: assets/images/two_women_high_five.png
+  AssetGenImage get twoWomenHighFive =>
+      const AssetGenImage('assets/images/two_women_high_five.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [
-    a1,
-    a2,
-    card1,
-    card2,
-    me,
-    onboarding1,
-    onboarding2,
-    r1,
-    r2,
-    sampleImage,
-  ];
+  List<AssetGenImage> get values => [sampleImage, twoWomenHighFive];
 }
 
 class Assets {
   const Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

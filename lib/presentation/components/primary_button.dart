@@ -8,6 +8,7 @@ class PrimaryButton extends StatelessWidget {
     required this.onPressed,
     this.isLoading = false,
     this.icon,
+    this.leading,
     this.height = 52,
     this.backgroundColor,
     this.foregroundColor,
@@ -23,6 +24,7 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool isLoading;
   final IconData? icon;
+  final Widget? leading;
   final double height;
   final Color? backgroundColor;
   final Color? foregroundColor;
@@ -35,6 +37,12 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Widget? leadingIcon =
+        leading ??
+        (icon != null
+            ? Icon(icon, size: 20, color: foregroundColor ?? Colors.white)
+            : null);
+
     final child =
         isLoading
             ? SizedBox(
@@ -51,8 +59,8 @@ class PrimaryButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (icon != null) ...[
-                  Icon(icon, size: 20, color: foregroundColor ?? Colors.white),
+                if (leadingIcon != null) ...[
+                  leadingIcon,
                   const SizedBox(width: 8),
                 ],
                 Text(
@@ -85,9 +93,7 @@ class PrimaryButton extends StatelessWidget {
             ),
           ),
         ).copyWith(
-          overlayColor: WidgetStateProperty.all(
-            overlayColor ?? Colors.white24,
-          ),
+          overlayColor: WidgetStateProperty.all(overlayColor ?? Colors.white24),
         ),
         child: child,
       ),
