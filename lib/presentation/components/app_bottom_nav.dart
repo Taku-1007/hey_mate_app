@@ -19,7 +19,6 @@ class AppBottomNav extends StatelessWidget {
 
   static const _items = [
     _NavItem(icon: Icons.search, label: 'Hey Mate'),
-    _NavItem(icon: Icons.event_note, label: '予定'),
     _NavItem(icon: Icons.chat_bubble_outline, label: 'メッセージ'),
     _NavItem(icon: Icons.person_outline, label: 'マイページ'),
   ];
