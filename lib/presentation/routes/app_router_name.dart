@@ -7,4 +7,6 @@ class AppRouteName {
   static const login = '/login';
   static const home = '/home';
   static const matches = '/matches';
+  static const myPage = '/my-page';
+  static const profileDetail = '/my-page/profile-detail';
 }
