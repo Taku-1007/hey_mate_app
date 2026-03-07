@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:hey_mate_app/presentation/pages/home_page.dart';
+import 'package:hey_mate_app/presentation/pages/match_list_page.dart';
 import 'package:hey_mate_app/presentation/routes/app_router_name.dart';
 import 'package:hey_mate_app/presentation/screens/signup_page.dart'
     show SignupPage;
@@ -20,6 +21,10 @@ GoRouter createRouter() {
       GoRoute(
         path: AppRouteName.home,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: AppRouteName.matches,
+        builder: (context, state) => const MatchListPage(),
       ),
     ],
   );
