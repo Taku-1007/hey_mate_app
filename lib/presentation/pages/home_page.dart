@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hey_mate_app/core/theme/app_colors.dart';
 import 'package:hey_mate_app/gen/assets.gen.dart';
 import 'package:hey_mate_app/presentation/components/app_bottom_nav.dart';
 import 'package:hey_mate_app/presentation/components/matching_action_buttons.dart';
 import 'package:hey_mate_app/presentation/components/partner_card.dart';
+import 'package:hey_mate_app/presentation/routes/app_router_name.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -213,10 +215,20 @@ class HomePage extends StatelessWidget {
         ),
         bottomNavigationBar: AppBottomNav(
           currentIndex: 0,
-          onTap: (_) {},
+          onTap: (index) {
+            switch (index) {
+              case 0:
+                return;
+              case 1:
+                context.go(AppRouteName.matches);
+                return;
+              case 2:
+                return;
+            }
+          },
           backgroundColor: AppColors.white,
           selectedColor: AppColors.primary,
-          unselectedColor: AppColors.primary,
+          unselectedColor: AppColors.textSecondary,
         ),
       ),
     );
